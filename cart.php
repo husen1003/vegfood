@@ -166,6 +166,7 @@
     		</div>
 			</div>
 		</section>
+    <?php include "newsletter.php"; ?>
     <?php include "footer.php"; ?>
 
   <script>

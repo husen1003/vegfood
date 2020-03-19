@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	include "dbHelper.php";
 ?>
   <head>
     <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>

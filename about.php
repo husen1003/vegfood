@@ -170,6 +170,9 @@
       </div>
     </section>
 
+
+    <?php include "newsletter.php"; ?>
+
     <section class="ftco-section bg-light">
 			<div class="container">
 				<div class="row no-gutters ftco-services">

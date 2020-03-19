@@ -191,6 +191,7 @@
         </div>
       </div>
     </section> <!-- .section -->
+    <?php include "newsletter.php"; ?>
     <?php include "footer.php"; ?>
 
   <script>
