@@ -28,10 +28,6 @@ include"sidebar.php";
 			<tr>
 				<th>ID:</th>
 
-				<th>Name:</th>
-
-				<th>Mo:</th>
-
 				<th>Email:</th>
 
 				<th>Password:</th>
@@ -44,7 +40,7 @@ include"sidebar.php";
 
 <?php
 	$number = 0;
-	$result = mysqli_query($con,"SELECT * FROM user");echo "<br>";
+	$result = mysqli_query($con,"SELECT * FROM admin");echo "<br>";
 	while($row = mysqli_fetch_array($result))
 	{
 		$number++;
@@ -52,8 +48,6 @@ include"sidebar.php";
 
 	<tr>	
 			<td><?php echo $number; ?></td>
-			<td><?php echo $row['fname']; ?></td>
-			<td><?php echo $row['mo']; ?></td>
 			<td><?php echo $row['email']; ?></td>
 			<td><?php echo $row['pass']; ?></td>
 <!-- 			<td>

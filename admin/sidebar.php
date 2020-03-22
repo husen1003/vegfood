@@ -1,4 +1,5 @@
 <?php
+    include"../dbHelper.php";
     session_start();
 ?>
 <!DOCTYPE html>
