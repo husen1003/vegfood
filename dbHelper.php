@@ -27,7 +27,9 @@
 		lname VARCHAR(50) NOT NULL,
 		mo VARCHAR(50) NOT NULL,
 		email VARCHAR(50) NOT NULL,
-		pass VARCHAR(50) NOT NULL
+		pass VARCHAR(50) NOT NULL,
+		verified VARCHAR(50) NOT NULL,
+		otp VARCHAR(50) NOT NULL
 	)";
 
 	mysqli_query($con, $createUserTable);

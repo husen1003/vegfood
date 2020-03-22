@@ -84,7 +84,7 @@ if (isset($_POST['login'])) {
     $countadmin = mysqli_num_rows($resultadmin);
     if($countadmin == 0){
 
-        $resultuser = mysqli_query($con, "SELECT * FROM user WHERE (mo = '$email' OR email = '$email') AND pass = '$pass'");
+        $resultuser = mysqli_query($con, "SELECT * FROM user WHERE (mo = '$email' OR email = '$email') AND pass = '$pass' AND verified = 'yes'");
         $countuser = mysqli_num_rows($resultuser);
         if($countuser == 1){
               $row = mysqli_fetch_array($resultuser);
@@ -94,21 +94,36 @@ if (isset($_POST['login'])) {
               $_SESSION['email'] = $row['email'];
 
               ?>
-
               <script>
                 window.location = 'index.php';
               </script>
-
               <?php          
         }else{
-          ?>
 
-          <script>
-            alert('Incorrect Username or Password!');
-            windows.open(login.php);
-          </script>
+              $checknonverify = mysqli_query($con, "SELECT * FROM user WHERE (mo = '$email' OR email = '$email') AND pass = '$pass' AND verified = 'no'");
+              if(mysqli_num_rows($checknonverify) == 1){
 
-          <?php          
+                  $otp = rand(100000,999999);
+
+                  $record = mysqli_fetch_array($checknonverify);
+                  $fetchedemail = $record['email'];
+                  mysqli_query($con, "UPDATE user SET otp = '$otp' WHERE email = '$fetchedemail'");
+                  $_SESSION['verify'] = $fetchedemail;
+                  ?>
+                  <script>
+                    window.location = 'verify.php';
+                  </script>
+                  <?php                    
+              }
+              else{
+                  ?>
+                  <script>
+                    alert('Incorrect Username or Password!');
+                    windows.open(login.php);
+                  </script>
+                  <?php                  
+              }
+        
         }
 
 

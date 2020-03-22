@@ -85,37 +85,67 @@ if(isset($_POST['login'])){
     $email = $_POST['email'];
     $pass1 = $_POST['pass1'];
     $pass2 = $_POST['pass2'];
+    $otp = rand(100000,999999);
 
-#Checking both password are same or not
+    #Checking both password are same or not
     if($pass1 == $pass2){
 
-      $insert = "INSERT INTO user VALUES(NULL, '$fname', '$lname', '$mo', '$email', '$pass1')";
-      if(!mysqli_query($con, $insert)){
-        echo "
-        <script>
-          alert('Both Password must be same!!');
-        </script>
-        ";
-      }
-      else{
-        echo "
-        <script>
-          window.location = 'login.php';
-        </script>
-        ";
-      }
+        #Checking thah The email or mobile number are already exist in database or not
+        #if exist then showing error else execute as it is
+        $detectnonverified = mysqli_query($con, "SELECT * FROM user WHERE (email = '$email' OR mo = '$mo') AND verified = 'no'");
+        $countdeleteuser = mysqli_num_rows($detectnonverified);
+        if($countdeleteuser == 1)
+        {
+            $deleterecord = mysqli_fetch_array($detectnonverified);
+            $deleteuserid = $deleterecord['id'];
+            $deleteuser = mysqli_query($con, "DELETE FROM user WHERE id = '$deleteuserid'");
+        }
 
+        $result = mysqli_query($con, "SELECT * FROM user WHERE (email = '$email' OR mo = '$mo') AND verified = 'yes'");
+        $cntduplicate = mysqli_num_rows($result);
 
-    }else{
-      ?>
-        <script type="text/javascript">
-          alert('Both Password must be same!!');
-        </script>
-      <?php
+        if($cntduplicate == 0)
+        {
+            $insert = "INSERT INTO user VALUES(NULL, '$fname', '$lname', '$mo', '$email', '$pass1','no','$otp')";
+            if(mysqli_query($con, $insert))
+            {
+              $_SESSION['verify'] = $email;
+                ?>
+                <script>
+                  window.location = "verify.php";
+                </script>
+                <?php
+            }       
+        }
+        else
+        {
+            ?>
+              <script type="text/javascript">
+                alert('Email or Mobile number Already exists!!');
+              </script>
+            <?php
+        }
+    }
+    else
+    {
+        ?>
+          <script type="text/javascript">
+            alert('Both Password must be same!!');
+          </script>
+        <?php
     }
 }
-
-
 	include "footer.php";
+
+
+function sendmail(){
+
+
+
+
+
+
+}
+
 
 ?>
