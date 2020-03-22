@@ -3,7 +3,7 @@
 	include "dbHelper.php";
 ?>
   <head>
-    <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
+    <title></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -79,7 +79,13 @@
 		          echo "<li class='nav-item'><a href='reg.php' class='nav-link'>Register</a></li>
 		          <li class='nav-item'><a href='login.php' class='nav-link'>Login</a></li>	 ";         		
 	          	}else{
-	          		echo "<li class='nav-item'><a href='userprofile.php' class='nav-link'>My profile</a></li>
+	          		echo "	          <li class='nav-item dropdown'>
+              <a class='nav-link dropdown-toggle' href='#' id='dropdown04' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>My Profile</a>
+              <div class='dropdown-menu' aria-labelledby='dropdown04'>
+              	<a class='dropdown-item' href='userprofile.php'>My Profile</a>
+              	<a class='dropdown-item' href='change_pass.php'>Change Password</a>
+              </div>
+            </li>
 	          		<li class='nav-item'><a href='logout.php' class='nav-link'>Logout</a></li>";
 	          	}
 

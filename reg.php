@@ -62,8 +62,7 @@
 
 
       <button type="submit" name="login" class="btn btn-primary" style="width: 100%"> REGISTER </button><br><br>
-      <a href="login.php" title="Register from here">If Already registered, Sign In!!</a>     
-      <a href="forgot_pass.php" style="float: right;">Forgot Password</a>
+      <a href="login.php" title="Register from here">If Already registered, Sign In!!</a>
     </div>
     </form>
   </center>

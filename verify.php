@@ -17,7 +17,7 @@
     <form action="" method="POST" style="width: 50%;" >
       <div class="form shadow-lg p-4" style="color: black; border-radius: 50px;">
 
-    <h2 align="center" style="color: white;"> User Login </h2><br><br>
+    <br><br>
     <h3>Please Check <font color="green"><?php echo $_SESSION['verify']; ?></font> account!</h3>
       <div class="form-group" align="left">
 
