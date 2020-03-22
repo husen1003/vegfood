@@ -54,6 +54,7 @@ if(isset($_POST['login'])){
 		$verified = mysqli_query($con, "UPDATE user SET verified = 'yes' WHERE email = '$email'");
               ?>
               <script>
+                alert('Verification Successfull!')
                 window.location = 'login.php';
               </script>
               <?php  		

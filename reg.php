@@ -1,5 +1,5 @@
 <?php
-
+  error_reporting(0);
 	include "header.php";
 
 ?>
@@ -61,7 +61,7 @@
 
 
 
-      <button type="submit" name="login" class="btn btn-primary" style="width: 100%"> LOGIN </button><br><br>
+      <button type="submit" name="login" class="btn btn-primary" style="width: 100%"> REGISTER </button><br><br>
       <a href="login.php" title="Register from here">If Already registered, Sign In!!</a>     
       <a href="forgot_pass.php" style="float: right;">Forgot Password</a>
     </div>
@@ -109,6 +109,68 @@ if(isset($_POST['login'])){
             $insert = "INSERT INTO user VALUES(NULL, '$fname', '$lname', '$mo', '$email', '$pass1','no','$otp')";
             if(mysqli_query($con, $insert))
             {
+
+
+
+
+
+
+            #Sending OTP to verify user
+
+
+
+            require 'phpmailer/PHPMailerAutoload.php';
+            require 'credential.php';
+
+            // Instantiation and passing `true` enables exceptions
+            $mail = new PHPMailer;
+
+            try {
+                // //Server settings
+                $mail->SMTPDebug = 0;                      // Enable verbose debug output
+                $mail->isSMTP();                                            // Send using SMTP
+                $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+                $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                $mail->Username   = EMAIL;                     // SMTP username
+                $mail->Password   = PASS;                               // SMTP password
+                $mail->SMTPSecure = tls;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+                $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+                //Recipients
+                $mail->setFrom(EMAIL, 'Vegfoods-Online-anywhere');
+                $mail->addAddress($email, $fname);     // Add a recipient
+                // $mail->addAddress('ellen@example.com');               // Name is optional
+                $mail->addReplyTo(EMAIL, 'Vegfoods-Online-anywhere');
+                // $mail->addCC('cc@example.com');
+                // $mail->addBCC('bcc@example.com');
+
+                // Attachments
+                // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+                // Content
+                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->Subject = 'Vegfoods verification code';
+                $mail->Body    = 'Your verification code is <b>'. $otp .'</b>!';
+                $mail->AltBody = 'Your verification code is '. $otp .'.';
+
+                $mail->send();
+                echo 'Message has been sent';
+            } catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            }
+
+
+
+
+
+
+
+
+
+
+
+
               $_SESSION['verify'] = $email;
                 ?>
                 <script>
@@ -138,14 +200,7 @@ if(isset($_POST['login'])){
 	include "footer.php";
 
 
-function sendmail(){
 
-
-
-
-
-
-}
 
 
 ?>
