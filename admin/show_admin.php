@@ -40,7 +40,7 @@ include"sidebar.php";
 
 <?php
 	$number = 0;
-	$result = mysqli_query($con,"SELECT * FROM admin");echo "<br>";
+	$result = mysqli_query($con,"SELECT * FROM admin WHERE verified = 'yes'");echo "<br>";
 	while($row = mysqli_fetch_array($result))
 	{
 		$number++;
@@ -68,7 +68,9 @@ include"sidebar.php";
 	</table>
 </div>
 
+<br><br>
 
+<center><a href="add_new_admin.php" title="Add New Admin" class="btn btn-info">Add New Admin</a></center>
 
 <br><br><br>
 

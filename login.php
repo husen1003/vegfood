@@ -80,7 +80,7 @@ if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $pass = $_POST['pass'];
 
-    $resultadmin = mysqli_query($con, "SELECT * FROM admin WHERE email = '$email' AND pass = '$pass'");
+    $resultadmin = mysqli_query($con, "SELECT * FROM admin WHERE email = '$email' AND pass = '$pass' AND verified = 'yes'");
     $countadmin = mysqli_num_rows($resultadmin);
     if($countadmin == 0){
 
@@ -198,7 +198,7 @@ if (isset($_POST['login'])) {
 
     }else{
               $row = mysqli_fetch_array($resultadmin);
-              $_SESSION['admin'] = $row['email'];
+              $_SESSION['admin'] = $row['fname'];
 
               ?>
 

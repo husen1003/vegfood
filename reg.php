@@ -78,6 +78,7 @@
 <?php
 include "dbHelper.php";
 if(isset($_POST['login'])){
+    
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $mo = $_POST['mo'];

@@ -4,11 +4,11 @@
 ?>
 <!DOCTYPE html>
 
-<html class="no-js" lang=""> <!--<![endif]-->
+<html class="no-js" lang="">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Librarian Panel</title>
+    <title>Admin Panel</title>
     <meta name="description" content="Hello Librarian">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,13 +21,11 @@
     <link rel="stylesheet" href="assets/css/themify-icons.css">
     <link rel="stylesheet" href="assets/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
-    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="assets/scss/style.css">
     <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
 
 
@@ -52,8 +50,6 @@
 </style>
 </head>
 <body>
-    <form ID="form1" runat="server">
-<!-- Left Panel -->
 
 <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
@@ -72,7 +68,7 @@
                 <li class="active">
                     <a href="index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                 </li>
-                <h3 class="menu-title">Menus</h3><!-- /.menu-title -->
+                <h3 class="menu-title">Menus</h3>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false"> <i class="menu-icon fa fa-user"></i>Librarian</a>
@@ -109,18 +105,12 @@
                 </li>
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
     </nav>
 </aside>
-<!-- /#left-panel -->
-
-<!-- Left Panel -->
-
-<!-- Right Panel -->
 
 <div id="right-panel" class="right-panel" style="width:100%;">
 
-    <!-- Header-->
+
     <header id="header" class="header">
 
         <div class="header-menu">
@@ -154,8 +144,5 @@
         </div>
 
     </header>
-    <!-- /header -->
-    <!-- Header-->
-
 
     <div class="content mt-3">
