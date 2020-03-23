@@ -72,10 +72,10 @@
                 <h3 class="menu-title">Menus</h3>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> <i class="menu-icon fa fa-user"></i>Librarian</a>
+                       aria-expanded="false"> <i class="menu-icon fa fa-user"></i>Admin</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-user"></i><a href="addadmin.php">Add new Librarian</a></li>
-                        <li><i class="fa fa-user"></i><a href="show-admin.php">See All Librarian</a></li>
+                        <li><i class="fa fa-user"></i><a href="add_new_admin.php">Add new Admin</a></li>
+                        <li><i class="fa fa-user"></i><a href="show_admin.php">See All Admins</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
@@ -99,7 +99,7 @@
                     <a href="contact.php"> <i class="menu-icon fa fa-comments"></i>Users Feedback</a>
                 </li>
                 <li>
-                    <a href="notice.php"> <i class="menu-icon fa fa-commenting"></i>Notice</a>
+                    <a href="news_letter.php"> <i class="menu-icon fa fa-commenting"></i>News Letter</a>
                 </li>
                 <li>
                     <a href="../logout.php"> <i class="menu-icon fa fa-sign-out"></i>Logout</a>
