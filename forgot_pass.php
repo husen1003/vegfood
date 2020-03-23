@@ -46,11 +46,18 @@ include"dbHelper.php";
 if(isset($_POST['login'])){
     $email = $_POST['email'];
 
+    $otp = rand(100000,999999);
+
     $check = mysqli_query($con, "SELECT * FROM user WHERE email = '$email' AND verified = 'yes'");
     if(mysqli_num_rows($check) == 1){
 
-            $record = mysqli_fetch_array($check);
-            $pass = $record['pass'];
+
+        if(mysqli_query($con, "UPDATE user SET otp = '$otp' WHERE email = '$email'"))
+        {
+
+
+
+
 
 
             # Sending Password via email
@@ -87,20 +94,36 @@ if(isset($_POST['login'])){
                 // Content
                 $mail->isHTML(true);                                  // Set email format to HTML
                 $mail->Subject = 'Vegfoods forgot password';
-                $mail->Body    = 'Your Password is <b>'. $pass .'</b> !';
-                $mail->AltBody = 'Your Password code is '. $pass .' .';
+                $mail->Body    = 'Your OTP for Reset Password is <b>'. $otp .'</b> !';
+                $mail->AltBody = 'Your OTP for Reset Password is '. $otp .' .';
 
                 $mail->send();
                 echo 'Message has been sent';
             } catch (Exception $e) {
                 echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            $_SESSION['reset'] = 'coder.husen@gmail.com';
             ?>
             <script>
               alert('Password Sent to your Email!!')
-              window.location = "login.php";
+              window.location = "verify.php";
             </script>
-            <?php            
+            <?php 
+        }           
 
     }
     else

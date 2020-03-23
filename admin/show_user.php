@@ -65,7 +65,7 @@ include"sidebar.php";
 			</td> -->
 			<td>
 				<a href="delete.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">
-					Delete
+					REMOVE
 				</a>
 			</td>
 	<tr>

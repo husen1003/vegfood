@@ -10,6 +10,9 @@
 
 	mysqli_query($con, "UPDATE user SET verified = 'no', removed_by = '$admin' WHERE id = '$id'");
 
-	header("location:show_user.php");
+	echo "<script> alert('User Removed Successfully!'); 
+		window.location = 'show_user.php';
+	</script>";
+
 
 ?>

@@ -132,7 +132,7 @@
                         Hello, <?php echo $_SESSION['admin']; ?>
                         <a class="nav-link" href="profile.php"><i class="fa fa- user"></i>My Profile</a>
 
-                        <a class="nav-link" href="changepass.php"><i class="fa fa- user"></i>Change Password</a>
+                        <a class="nav-link" href="change_pass.php"><i class="fa fa- user"></i>Change Password</a>
 
                         <a class="nav-link" href="contact.php"><i class="fa fa- user"></i>User's Feedback</a>
 

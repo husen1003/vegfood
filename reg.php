@@ -96,7 +96,7 @@ if(isset($_POST['login'])){
 
         #Checking thah The email or mobile number are already exist in database or not
         #if exist then showing error else execute as it is
-        $detectnonverified = mysqli_query($con, "SELECT * FROM user WHERE (email = '$email' OR mo = '$mo') AND verified = 'no'");
+        $detectnonverified = mysqli_query($con, "SELECT * FROM user WHERE (email = '$email' OR mo = '$mo') AND verified = 'no' AND removed_by ='NONE'");
         $countdeleteuser = mysqli_num_rows($detectnonverified);
         if($countdeleteuser == 1)
         {
@@ -178,7 +178,8 @@ if(isset($_POST['login'])){
               $_SESSION['verify'] = $email;
                 ?>
                 <script>
-                  window.location = "verify.php";
+                    alert('OTP has been sent on your EMAIL!')
+                    window.location = "verify.php";
                 </script>
                 <?php
             }       

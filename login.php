@@ -16,6 +16,7 @@
     <?php
   }
 
+  
 ?>
 
 <!--     <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
@@ -81,7 +82,7 @@ if (isset($_POST['login'])) {
     $pass = $_POST['pass'];
     $pass = md5($pass);
 
-    $resultadmin = mysqli_query($con, "SELECT * FROM admin WHERE email = '$email' AND pass = '$pass' AND verified = 'yes'");
+    $resultadmin = mysqli_query($con, "SELECT * FROM admin WHERE (mo = '$email' OR email = '$email') AND pass = '$pass' AND verified = 'yes'");
     $countadmin = mysqli_num_rows($resultadmin);
     if($countadmin == 0){
 
@@ -200,6 +201,9 @@ if (isset($_POST['login'])) {
     }else{
               $row = mysqli_fetch_array($resultadmin);
               $_SESSION['admin'] = $row['fname'];
+              $_SESSION['lname'] = $row['lname'];
+              $_SESSION['mo'] = $row['mo'];
+              $_SESSION['email'] = $row['email'];
 
               ?>
 
