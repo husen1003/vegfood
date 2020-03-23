@@ -1,6 +1,6 @@
 <?php
 	
 	// include"../credential.php";
-	$con = mysqli_connect("localhost","root","",DB);
+	$con = mysqli_connect("localhost","root","",'vegfoods');
 
 ?>

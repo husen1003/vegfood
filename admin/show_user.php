@@ -26,15 +26,17 @@ include"sidebar.php";
 	<table align="center" class="table table-striped table-hover text-center" id="myTable">
 		<thead class="thead-dark">
 			<tr>
-				<th>ID:</th>
+				<th>ID</th>
 
-				<th>Name:</th>
+				<th>Name</th>
 
-				<th>Mo:</th>
+				<th>Mo</th>
 
-				<th>Email:</th>
+				<th>Email</th>
 
-				<th>Password:</th>
+				<th>Password</th>
+
+				<th>Delete</th>
 
 			</tr>	
 		</thead>
@@ -44,7 +46,7 @@ include"sidebar.php";
 
 <?php
 	$number = 0;
-	$result = mysqli_query($con,"SELECT * FROM user");echo "<br>";
+	$result = mysqli_query($con,"SELECT * FROM user WHERE verified = 'yes'");echo "<br>";
 	while($row = mysqli_fetch_array($result))
 	{
 		$number++;
@@ -60,12 +62,12 @@ include"sidebar.php";
 				<a href="update.php?id=<?php echo $row['id'] ?>&name=<?php echo $row['name'] ?>&mo=<?php echo $row['mo'] ?>&email=<?php echo $row['email'] ?>&pwd=<?php echo $row['p1'] ?>">
 					Update
 				</a>
-			</td>
+			</td> -->
 			<td>
-				<a href="delete.php?id=<?php echo $row['id'] ?>">
+				<a href="delete.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">
 					Delete
 				</a>
-			</td> -->
+			</td>
 	<tr>
 <?php		
 	}	
