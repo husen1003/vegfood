@@ -116,10 +116,10 @@ if(isset($_POST['login'])){
 
 
 
-            $_SESSION['reset'] = 'coder.husen@gmail.com';
+            $_SESSION['reset'] = $email;
             ?>
             <script>
-              alert('Password Sent to your Email!!')
+              alert('OTP Sent to your Email!!')
               window.location = "verify.php";
             </script>
             <?php 

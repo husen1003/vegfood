@@ -90,6 +90,7 @@ if (isset($_POST['login'])) {
         $countuser = mysqli_num_rows($resultuser);
         if($countuser == 1){
               $row = mysqli_fetch_array($resultuser);
+              $_SESSION['id'] = $row['id'];
               $_SESSION['user'] = $row['fname'];
               $_SESSION['lname'] = $row['lname'];
               $_SESSION['mo'] = $row['mo'];
