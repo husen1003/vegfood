@@ -40,7 +40,7 @@
 </html>
 <?php
 
-include"../dbHelper.php";
+include"dbHelper.php";
 
 if(isset($_POST['login'])){
 

@@ -72,7 +72,7 @@ include"sidebar.php";
 <?php
 
 include"sidebar2.php";
-include"../dbHelper.php";
+include"dbHelper.php";
 
 if(isset($_POST['login'])){
     
@@ -83,6 +83,10 @@ if(isset($_POST['login'])){
     $pass = $_POST['pass'];
     $cpass = $_POST['cpass'];
     $otp = rand(100000,999999);
+
+
+    $pass = md5($pass);
+    $cpass = md5($cpass);
 
     #Checking both password are same or not
     if($pass == $cpass){
@@ -105,7 +109,7 @@ if(isset($_POST['login'])){
         if($cntduplicate == 0)
         {
         	$admin_name = $_SESSION['admin'];
-            $insert = "INSERT INTO admin VALUES(NULL, '$fname', '$lname', '$mo', '$email', '$pass', '$admin_name', 'no', '$otp')";
+            $insert = "INSERT INTO admin VALUES(NULL, '$fname', '$lname', '$mo', '$email', '$pass', '$admin_name', 'no', '$otp','NONE')";
             if(mysqli_query($con, $insert))
             {
 

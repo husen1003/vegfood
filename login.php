@@ -79,6 +79,7 @@
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $pass = $_POST['pass'];
+    $pass = md5($pass);
 
     $resultadmin = mysqli_query($con, "SELECT * FROM admin WHERE email = '$email' AND pass = '$pass' AND verified = 'yes'");
     $countadmin = mysqli_num_rows($resultadmin);

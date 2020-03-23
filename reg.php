@@ -90,6 +90,10 @@ if(isset($_POST['login'])){
     #Checking both password are same or not
     if($pass1 == $pass2){
 
+        #   Encrypt Password
+
+        $pass1 = md5($pass1);
+
         #Checking thah The email or mobile number are already exist in database or not
         #if exist then showing error else execute as it is
         $detectnonverified = mysqli_query($con, "SELECT * FROM user WHERE (email = '$email' OR mo = '$mo') AND verified = 'no'");
@@ -106,7 +110,7 @@ if(isset($_POST['login'])){
 
         if($cntduplicate == 0)
         {
-            $insert = "INSERT INTO user VALUES(NULL, '$fname', '$lname', '$mo', '$email', '$pass1','no','$otp')";
+            $insert = "INSERT INTO user VALUES(NULL, '$fname', '$lname', '$mo', '$email', '$pass1','no','$otp','NONE')";
             if(mysqli_query($con, $insert))
             {
 

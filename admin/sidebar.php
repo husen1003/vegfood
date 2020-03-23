@@ -1,5 +1,6 @@
 <?php
-    include"../dbHelper.php";
+    include("../credential.php");
+    include"dbHelper.php";
     session_start();
 ?>
 <!DOCTYPE html>

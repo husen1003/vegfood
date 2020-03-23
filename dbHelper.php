@@ -34,7 +34,7 @@
 	$check = mysqli_query($con, "SELECT * FROM admin WHERE email = 'husen@gmail.com'");
 	$existornot = mysqli_num_rows($check);
 	if($existornot == 0){
-		$insertadmin = "INSERT INTO admin VALUES(NULL, 'Husen', 'Lokhandwala', '7016868559', 'husen@gmail.com','abcd','Source','yes','777777', 'NONE')";
+		$insertadmin = "INSERT INTO admin VALUES(NULL, 'Husen', 'Lokhandwala', '7016868559', 'husen@gmail.com','e2fc714c4727ee9395f324cd2e7f331f','Source','yes','777777', 'NONE')";
 		mysqli_query($con, $insertadmin);
 	}
 
@@ -47,7 +47,8 @@
 		email VARCHAR(50) NOT NULL,
 		pass VARCHAR(50) NOT NULL,
 		verified VARCHAR(50) NOT NULL,
-		otp VARCHAR(50) NOT NULL
+		otp VARCHAR(50) NOT NULL,
+		removed_by VARCHAR(50) NOT NULL
 	)";
 
 	mysqli_query($con, $createUserTable);
@@ -63,6 +64,7 @@
 	)";
 
 	mysqli_query($con, $createProductTable);
+
 
 
 ?>

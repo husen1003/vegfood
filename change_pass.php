@@ -26,7 +26,7 @@ include"header.php";
 
 
 
-      <button type="submit" name="login" class="btn btn-primary" style="width: 100%"> GET PASSWORD </button><br><br>
+      <button type="submit" name="login" class="btn btn-primary" style="width: 100%"> CHANGE PASSWORD </button><br><br>
     </div>
     </form>
   </center>
@@ -46,6 +46,10 @@ if(isset($_POST['login'])){
 	$old = $_POST['old'];
 	$new = $_POST['new'];
 	$cnew = $_POST['cnew'];
+
+	$old = md5($old);
+	$new = md5($new);
+	$cnew = md5($cnew);
 
 	$check = mysqli_query($con, "SELECT * FROM user WHERE email = '$email'");
 	$record = mysqli_fetch_array($check);
