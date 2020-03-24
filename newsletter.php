@@ -21,12 +21,18 @@
 
 include"dbHelper.php";
 
-if(isset($_POST['login'])){
+if(isset($_POST['login']))
+{
     $subscriber = $_POST['subscriber'];
-    $check = mysqli_query($con, "SELECT * FROM newsletter WHERE email = '$subscriber'");
-    if(mysqli_num_rows($check) == 0)
+    $checkinusers = mysqli_query($con, "SELECT * FROM user WHERE email = '$subscriber' AND verified = 'yes'");
+    if(mysqli_num_rows($checkinusers) == 0)
     {
-        $insert = mysqli_query($con, "INSERT INTO newsletter VALUES(NULL, '$subscriber')");
+
+    
+        $check = mysqli_query($con, "SELECT * FROM newsletter WHERE email = '$subscriber'");
+        if(mysqli_num_rows($check) == 0)
+        {
+            $insert = mysqli_query($con, "INSERT INTO newsletter VALUES(NULL, '$subscriber')");
 
 
             require 'phpmailer/PHPMailerAutoload.php';
@@ -67,21 +73,21 @@ if(isset($_POST['login'])){
                 $mail->AltBody = 'Your verification code is '. $otp .'.';
 
                 $mail->send();
-            } catch (Exception $e) {
+            } 
+            catch (Exception $e) 
+            {
                 echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }
-
-
-
-
-
-
-
-        echo "<script> alert('Subscribed Successfully'); </script>";
+            echo "<script> alert('Subscribed Successfully'); </script>";
+        }
+        else
+        {
+            echo "<script> alert('Already Subscribed!'); </script>";
+        }
     }
     else
     {
-        echo "<script> alert('Subscribed Successfully'); </script>";        
+        echo "<script> alert('Already Registered in our Service!'); </script>";        
     }
 }
 

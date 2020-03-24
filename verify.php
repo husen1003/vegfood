@@ -61,13 +61,24 @@ if(isset($_POST['login'])){
       	$otp = $_POST['otp'];
       	$email = $_SESSION['verify'];
 
+
+        # Fetching OTP from the database to compare both OTP is equal or not
+
       	$find = mysqli_query($con, "SELECT * FROM user WHERE email = '$email'");
       	$record = mysqli_fetch_array($find);
       	$otpdb = $record['otp'];
       	if($otpdb == $otp){
+
+          # If OTP is verified then updating user verified column
+
       		$verified = mysqli_query($con, "UPDATE user SET verified = 'yes' WHERE email = '$email'");
 
+          # Deleting Regitered user from the newsletter email, because of duplicate records
 
+          $newsletter = mysqli_query($con, "DELETE FROM newsletter WHERE email = '$email'");
+
+
+            # Sending OTP to user's email
 
             require 'phpmailer/PHPMailerAutoload.php';
             require 'credential.php';
